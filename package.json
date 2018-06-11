@@ -1,0 +1,17 @@
+{
+  "name": "elm-todo",
+  "version": "0.1.0",
+  "description": "Test app with elm",
+  "main": "index.js",
+  "scripts": {
+    "reactor": "elm-reactor",
+    "package": "elm-package",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "npm run package install"
+  },
+  "author": "Artem Demo",
+  "license": "ISC",
+  "dependencies": {
+    "elm": "^0.18.0"
+  }
+}
