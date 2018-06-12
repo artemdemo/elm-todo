@@ -4,6 +4,7 @@
   "description": "Test app with elm",
   "main": "index.js",
   "scripts": {
+    "start": "npm run reactor",
     "reactor": "elm-reactor",
     "package": "elm-package",
     "test": "echo \"Error: no test specified\" && exit 1",

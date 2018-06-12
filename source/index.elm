@@ -1,5 +1,6 @@
-import Html exposing (Html, button, div, text)
-import Html.Events exposing (onClick)
+import Html exposing (Html, Attribute, div, input, text)
+import Html.Attributes exposing (..)
+import Html.Events exposing (onInput)
 
 
 main =
@@ -8,37 +9,31 @@ main =
 
 -- MODEL
 
-type alias Model = Int
+type alias Model =
+  { content : String }
 
 model : Model
 model =
-  0
+  { content = "" }
 
 
 -- UPDATE
 
-type AppMsg = Increment | Decrement | Reset
+type Msg
+  = Change String
 
-update : AppMsg -> Model -> Model
+update : Msg -> Model -> Model
 update msg model =
   case msg of
-    Increment ->
-      model + 1
-
-    Decrement ->
-      model - 1
-
-    Reset ->
-      0
+    Change newContent ->
+      { model | content = newContent }
 
 
 -- VIEW
 
-view : Model -> Html AppMsg
+view : Model -> Html Msg
 view model =
   div []
-    [ button [ onClick Decrement ] [ text "-" ],
-      div [] [ text (toString model) ],
-      button [ onClick Increment ] [ text "+" ],
-      button [ onClick Reset ] [ text "reset" ]
+    [ input [ placeholder "Text to reverse", onInput Change ] []
+    , div [] [ text (String.reverse model.content) ]
     ]
