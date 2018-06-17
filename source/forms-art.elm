@@ -53,7 +53,7 @@ view model =
     [ input [ type_ "text", placeholder "Name", onInput Name ] []
     , input [ type_ "password", placeholder "Password", onInput Password ] []
     , input [ type_ "password", placeholder "Re-enter Password", onInput PasswordAgain ] []
-    , button [ onClick ValidInput ] [ text "Let go" ]
+    , button [ onClick ValidInput ] [ text "Let's go" ]
     , viewValidation model
     ]
 
