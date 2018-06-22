@@ -25,6 +25,7 @@ model =
 type Msg
   = Change String
   | AddTask
+  | RemoveTask AppTask
 
 update : Msg -> Model -> Model
 update msg model =
@@ -34,6 +35,9 @@ update msg model =
 
     AddTask ->
       { model | tasks = {name = model.newTask, id = List.length model.tasks} :: model.tasks }
+
+    RemoveTask task ->
+      { model | tasks = List.filter (\item  -> item.id /= task.id) model.tasks }
 
 -- VIEW
 
@@ -49,12 +53,12 @@ view model =
     , listView model
     ]
 
-listView : Model -> Html msg
+listView : Model -> Html Msg
 listView model =
   ul []
     (List.map (\task -> li []
       [ text task.name
-      , button [] [ text "-"]
+      , button [ onClick (RemoveTask task) ] [ text "-"]
       ]) model.tasks)
 
 -- MAIN
