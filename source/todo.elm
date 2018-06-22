@@ -44,8 +44,9 @@ update msg model =
 view : Model -> Html Msg
 view model =
   div [ style
-        [ ("margin", "20px auto")
-        , ("max-width", "400px")
+        [ ("margin", "150px auto")
+        , ("width", "200px")
+        , ("transform", "scale(1.75)")
         ]
       ]
     [ input [ placeholder "New task", onInput Change ] []
@@ -63,7 +64,6 @@ listView model =
 
 -- MAIN
 
-main : Program Never Model Msg
 main =
     Html.beginnerProgram {
       model = model
